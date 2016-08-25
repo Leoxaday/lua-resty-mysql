@@ -90,7 +90,7 @@ local MYSQL_TYPE_BIT         = 16
 local MYSQL_TYPE_STRING      = 254
 local MYSQL_TYPE_NEWDECIMAL  = 246
 
-local MYSQL_TYPE_DECIMAL     = 0
+-- local MYSQL_TYPE_DECIMAL     = 0
 -- local MYSQL_TYPE_NULL        = 6
 -- local MYSQL_TYPE_NEWDATE     = 14
 -- local MYSQL_TYPE_VARCHAR     = 15
