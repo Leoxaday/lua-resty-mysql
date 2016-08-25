@@ -57,7 +57,7 @@ if not ok then
 end
 
 
-local _M = { _VERSION = '0.16' }
+local _M = { _VERSION = '0.17' }
 
 
 -- constants
@@ -74,13 +74,11 @@ local COM_STMT_EXECUTE = 0x17
 local SERVER_MORE_RESULTS_EXISTS = 8
 
 -- mysql data type
-local MYSQL_TYPE_DECIMAL     = 0
 local MYSQL_TYPE_TINY        = 1
 local MYSQL_TYPE_SHORT       = 2
 local MYSQL_TYPE_LONG        = 3
 local MYSQL_TYPE_FLOAT       = 4
 local MYSQL_TYPE_DOUBLE      = 5
-local MYSQL_TYPE_NULL        = 6
 local MYSQL_TYPE_TIMESTAMP   = 7
 local MYSQL_TYPE_LONGLONG    = 8
 local MYSQL_TYPE_INT24       = 9
@@ -88,19 +86,22 @@ local MYSQL_TYPE_DATE        = 10
 local MYSQL_TYPE_TIME        = 11
 local MYSQL_TYPE_DATETIME    = 12
 local MYSQL_TYPE_YEAR        = 13
-local MYSQL_TYPE_NEWDATE     = 14
-local MYSQL_TYPE_VARCHAR     = 15
 local MYSQL_TYPE_BIT         = 16
-local MYSQL_TYPE_NEWDECIMAL  = 246
-local MYSQL_TYPE_ENUM        = 247
-local MYSQL_TYPE_SET         = 248
-local MYSQL_TYPE_TINY_BLOB   = 249
-local MYSQL_TYPE_MEDIUM_BLOB = 250
-local MYSQL_TYPE_LONG_BLOB   = 251
-local MYSQL_TYPE_BLOB        = 252
-local MYSQL_TYPE_VAR_STRING  = 253
 local MYSQL_TYPE_STRING      = 254
-local MYSQL_TYPE_GEOMETRY    = 255
+local MYSQL_TYPE_NEWDECIMAL  = 246
+
+local MYSQL_TYPE_DECIMAL     = 0
+-- local MYSQL_TYPE_NULL        = 6
+-- local MYSQL_TYPE_NEWDATE     = 14
+-- local MYSQL_TYPE_VARCHAR     = 15
+-- local MYSQL_TYPE_ENUM        = 247
+-- local MYSQL_TYPE_SET         = 248
+-- local MYSQL_TYPE_TINY_BLOB   = 249
+-- local MYSQL_TYPE_MEDIUM_BLOB = 250
+-- local MYSQL_TYPE_LONG_BLOB   = 251
+-- local MYSQL_TYPE_BLOB        = 252
+-- local MYSQL_TYPE_VAR_STRING  = 253
+-- local MYSQL_TYPE_GEOMETRY    = 255
 
 -- 16MB - 1, the default max allowed packet size used by libmysqlclient
 local FULL_PACKET_SIZE = 16777215
