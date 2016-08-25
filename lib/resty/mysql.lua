@@ -985,6 +985,10 @@ local function _parse_result_data_packet(data, pos, cols, compact)
             value, pos = _from_length_coded_str(data, pos)
             value = _parse_datetime(value, typ)
 
+        elseif typ == MYSQL_TYPE_NEWDECIMAL then
+            value, pos = _from_length_coded_str(data, pos)
+            value = tonumber(value)
+
         else
             value, pos = _from_length_coded_str(data, pos)
         end

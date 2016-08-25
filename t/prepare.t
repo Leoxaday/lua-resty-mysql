@@ -183,10 +183,10 @@ execute success:[{"id":1},{"id":2}]
                          .. "u_bigint  BIGINT,"
                          .. "u_float   FLOAT,"      -- 8
                          .. "u_double  DOUBLE,"
-                         .. "u_real    REAL,"
-                         .. "u_decimal DECIMAL,"
-                         .. "u_dec     DEC,"        -- 12
-                         .. "u_num     NUMERIC)")
+                         .. "u_real    REAL(5, 2),"
+                         .. "u_decimal DECIMAL(5, 3),"
+                         .. "u_dec     DEC(12,4),"        -- 12
+                         .. "u_num     NUMERIC(12, 5))")
             if not res then
                 ngx.say("create table bad result: ", err, ": ", errcode, ": ", sqlstate, ".")
                 return
@@ -196,7 +196,7 @@ execute success:[{"id":1},{"id":2}]
 
             res, err, errcode, sqlstate =
                 db:query("insert into cats "
-                         .. "values (1, 2, true, 4, 5, 6, 7, 8.125, 9.23231, 10, 11, 12, 13)")
+                         .. "values (1, 2, true, 4, 5, 6, 7, 8.125, 9.23231, 10.01, 11.001, 12.0002, 13.00004)")
             if not res then
                 ngx.say("insert values bad result: ", err, ": ", errcode, ": ", sqlstate, ".")
                 return
@@ -246,7 +246,7 @@ table cats dropped.
 table cats created.
 1 rows inserted into table cats (last insert id: 0)
 prepare success:1
-execute success:[{"bool":1,"u_bigint":7,"u_bit":2,"u_dec":"12","u_decimal":"11","u_double":9.23231,"u_float":8.125,"u_int":5,"u_integer":6,"u_num":"13","u_real":10,"u_small":4,"u_tiny":1}]
+execute success:[{"bool":1,"u_bigint":7,"u_bit":2,"u_dec":12.0002,"u_decimal":11.001,"u_double":9.23231,"u_float":8.125,"u_int":5,"u_integer":6,"u_num":13.00004,"u_real":10.01,"u_small":4,"u_tiny":1}]
 --- no_error_log
 [error]
 
