@@ -208,7 +208,18 @@ end
 
 
 local function _to_binary_coded_string(data)
-    return strchar(#data) .. data
+    local data_len = #data
+    local len_char
+    if data_len <= 250 then
+        len_char = strchar(data_len)
+    elseif data_len > 250 and data_len < 65536 then
+        len_char = strchar(252) .. _set_byte2(data_len)
+    elseif data_len >= 65536 then
+        len_char = strchar(253) .. _set_byte3(data_len)
+    else -- lua maxium hold 4G data
+        len_char = strchar(254) .. _set_byte4(data_len) .. strchar(0,0,0,0)
+    end
+    return len_char .. data
 end
 
 
